@@ -1,5 +1,4 @@
 import React from 'react'
-import './slider.css'
 import HeroSlider, { Slide } from 'hero-slider'
 
 
