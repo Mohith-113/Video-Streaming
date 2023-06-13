@@ -1,52 +1,44 @@
-import { useRef } from "react";
-import { useState } from "react";
-import "./SignInForm.css";
+import "./Login.css";
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
-export default function Register() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const emailRef = useRef();
-  const passwordRef = useRef();
-
-  const handleStart = () => {
-    setEmail(emailRef.current.value);
-  };
-  const handleFinish = () => {
-    setPassword(passwordRef.current.value);
-  };
+export default function Login() {
+  const navigate = useNavigate();
+  const [register, setregister] = useState({ name: '', username: '', email: '', password: '' });
+  const changeHandler = (e) => {
+      setregister({ ...register, [e.target.name]: e.target.value });
+  }
+  const submitHandler = (e) => {
+      e.preventDefault();
+      axios.post(`http://localhost:5000/api/auth/register`, register).then(res => { alert(res.data); navigate('/login') }).catch(err => alert(err.response.data));
+  }
   return (
-    <div className="register">
-      <div className="top">
-        <div className="wrapper">
-          <h1>Video Streaming</h1>
-          <button className="login">Sign Up</button>
-        </div>
-      </div>
+    <div className="login">
+      
       <div className="container">
-        <h1>Explore the definition of Video Streaming and its working.</h1>
-        <h2>Watch anywhere. Cancel anytime.Go limitless.</h2>
-        
-        {!email ? (
-          <div className="input">
-            <input type="email" placeholder="email address" ref={emailRef} />
-            <button className="registerButton" onClick={handleStart}>
-              Get Started
-            </button>
-          </div>
-        ) : (
-          <form className="input">
-            <input type="password" placeholder="password" ref={passwordRef} />
-            <button className="registerButton" onClick={handleFinish}>
-              Start
-            </button>
-          </form>
-        )}
-        <br />
-        <span>
-            New to Video Streaming? <b className="Signup">Sign up now.</b>
-          </span>
+      <div className='register' >
+            <div className="loginadmin"><Link to='/adminlogin' >Login as Admin</Link></div>
+            <h2 className="regishead">Sign-up</h2>
+            <form className="regisform" onSubmit={submitHandler}>
+                <label htmlFor="name">Name: <br />
+                    <input type="text" name='name' onChange={changeHandler} autoComplete='off' required style={{width:'250px'}} />
+                </label>
+                <label htmlFor="name">Username: <br />
+                    <input type="text" name='username' onChange={changeHandler} autoComplete='off' required style={{width:'250px'}} />
+                </label>
+                <label htmlFor="name">Email: <br />
+                    <input type="text" name='email' onChange={changeHandler} autoComplete='off' required style={{width:'250px'}} />
+                </label>
+                <label htmlFor="name">Password: <br />
+                    <input type="password" name='password' onChange={changeHandler} autoComplete='off' required style={{width:'250px'}} />
+                </label>
+                <input className='loginButton' type="submit" value="Register" style={{margin:'5px 0 0 0'}}/>
+            </form>
+            <div className="already">Already have an account? <Link to='/login'>Sign-In</Link></div>
+        </div>
       </div>
     </div>
   );

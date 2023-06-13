@@ -124,3 +124,28 @@ form {
           font-weight: 500;
           cursor: pointer;
   }
+
+  .user {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .name,
+  .username,
+  .usermail {
+    margin-right: 10px;
+  }
+  
+  .deletebtn {
+    margin-left: auto;
+  }
+  
+  .deletebtn button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  

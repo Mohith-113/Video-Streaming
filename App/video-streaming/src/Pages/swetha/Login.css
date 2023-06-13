@@ -1,5 +1,5 @@
 .login {
-    width: 100vw;
+    width: 100%;
     height: 100vh;
     background: linear-gradient(
         to bottom,
@@ -7,7 +7,7 @@
         rgba(0, 0, 0, 1) 100%
       ),
       url("https://vivoent.asia/images/solutions/solutions_video_streaming.jpg");
-    background-size: cover;
+    /* background-size: cover; */
     position: relative;
   
     .container {

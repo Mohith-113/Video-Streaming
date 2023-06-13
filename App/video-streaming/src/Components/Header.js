@@ -46,6 +46,8 @@ import PlayPage from './yasaswini/PlayPage'
 import Login from '../Pages/swetha/Login'
 import SignIn from '../Pages/swetha/SignIn';
 import TM from '../Pages/TM';
+import Admindash from '../Pages/Admindash';
+import Adminlogin from '../Pages/Adminlogin';
 
 class Header extends React.Component{
   
@@ -65,7 +67,8 @@ class Header extends React.Component{
               <Route path='/Login' element={<Login/>} />
               <Route path='/SignUp' element={<SignIn/>} />
               <Route path='/TeluguMovies' element={<TM/>} />
-
+              <Route path='/Adminlogin' element={<Adminlogin/>}/>
+              <Route path='/Admindash' element={<Admindash/>}/>
 
            </Routes>
         </BrowserRouter>
