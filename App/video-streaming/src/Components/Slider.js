@@ -1,63 +1,36 @@
-import React from 'react'
-import HeroSlider, { Slide } from 'hero-slider'
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Carousel } from 'react-bootstrap';
 
-
-export default function Slider() {
-
-    const Img1 = "https://i.ytimg.com/vi/oqcXT3tkZD0/maxresdefault.jpg";
-    const Img2 = "https://assets-prd.ignimgs.com/2022/08/02/time-travel-movies-slideshow-1659475227004.jpg";
-    const Img3 = "https://img.jagranjosh.com/images/2022/December/7122022/most-searched-movie.jpg";
-    const Img4 = "https://www.91-cdn.com/hub/wp-content/uploads/2022/12/Best-South-Indian-movies.jpg";
+const Slider = () => {
   return (
-    <div>
-      <div className='Slider'>
-
-        <HeroSlider
-            slidingAnimation='left_to_right'
-            orientation="horizantal"
-            initialSlide={1}
-            onBeforeChange={(previousSlide,nextSlide)=>console.log("onBeforeChange",previousSlide,nextSlide)}
-            onChange={nextSlide => console.log("onChange",nextSlide)}
-            onAfterChange={nextSlide => console.log("onAfterChange",nextSlide)}
-            style={{
-                backgroundColor:'rgba(0,0,0,0.3)'
-            }}
-            settings={{
-                slidingDuration:250,
-                slidingDelay:100,
-                shouldAutoplay:true,
-                shouldDisplayButtons:true,
-                autoplayDuration:5000,
-                height:"60vh"
-            }}
-        >
-            <Slide
-            background={{
-                backgroundImage: Img1,
-                backgroundAttachment:'fixed'
-            }}
-            />
-            <Slide
-            background={{
-                backgroundImage: Img2,
-                backgroundAttachment:'fixed'
-            }}
-            />
-            <Slide
-            background={{
-                backgroundImage: Img3,
-                backgroundAttachment:'fixed'
-            }}
-            />
-            <Slide
-            background={{
-                backgroundImage: Img4,
-                backgroundAttachment:'fixed'
-            }}
-            />
-        </HeroSlider>
-
-      </div>
-    </div>
-  )
+    <Carousel style={{ height: '70vh', width: '100%' }}>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://static1.srcdn.com/wordpress/wp-content/uploads/2020/08/10-Best-Movies-on-Netflix-You-Didn---t-Know-Were-Made-By-Famous-Directors-amp-What-They---re-Known-For.jpg "
+          alt="First slide" 
+          style={{ height:'70vh'}}
+        />
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://static0.thethingsimages.com/wordpress/wp-content/uploads/2020/01/scit-fi.jpg"
+          alt="Second slide"
+          style={{ height:'70vh'}}
+        />
+      </Carousel.Item>
+      <Carousel.Item>
+        <img
+          className="d-block w-100"
+          src="https://static1.colliderimages.com/wordpress/wp-content/uploads/2021/08/best-kids-movies-netflix.jpg"
+          alt="Third slide"
+          style={{ height:'70vh'}}
+        />
+      </Carousel.Item>
+    </Carousel>
+  );
 }
+
+export default Slider;
