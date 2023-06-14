@@ -3,6 +3,7 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../model/Schema');
 const jwt = require('jsonwebtoken');
+const Addmve = require('../model/SchemaAddNve');
 
 //register route
 router.post("/register", async (req, res) => {
@@ -65,5 +66,27 @@ router.post('/adminlogin', async(req, res) => {
         return res.status(405).json("user/password is incorrect");
     }
 });
+
+//add route
+router.post("/add", async (req, res) => {
+    let {  title, posterUrl, flexiUrl , description, videoUrl} = req.body;
+    //check the user already exist with this email
+    const takenEmail = await Addmve.findOne({ title: title });
+    if (takenEmail) {
+        return res.status(405).json("Movie already added");
+    } else {
+        password = await bcrypt.hash(req.body.password, 10);
+        const newUser = new User({
+            title,
+            posterUrl,
+            flexiUrl,
+            description,
+            videoUrl,
+        });
+        await newUser.save();
+        return res.json("Movie added sucessfully");
+    }
+});
+
 
 module.exports = router;

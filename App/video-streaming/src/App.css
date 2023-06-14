@@ -148,4 +148,7 @@ form {
     padding: 5px 10px;
     cursor: pointer;
   }
-  
+.addform{
+  background-color: #fff;
+  height: 100%;
+}

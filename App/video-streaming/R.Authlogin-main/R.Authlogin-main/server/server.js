@@ -3,7 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const auth = require('./routes/auth');
 const user = require('./routes/user');
-const addmve = require('./Addmv');
+const Addmve = require('./model/SchemaAddNve');
 
 //initilze express.js
 const app = express();
@@ -24,8 +24,7 @@ app.use('/api/auth', auth);
 //users api's
 app.use('/api/user', user);
 //Mve api's
-app.use('/api/movies', addmve);
-  
+app.use('/api/movies', Addmve)
 
 //run server
 app.listen(5000, () => console.log('server is running'));

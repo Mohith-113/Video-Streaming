@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const Addmve = require('../model/SchemaAddNve');
+const Addmve = require('./model/SchemaAddNve');
 
 // Store data in MongoDB
 router.post('/', (req, res) => {
