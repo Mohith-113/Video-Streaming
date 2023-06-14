@@ -3,7 +3,8 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const auth = require('./routes/auth');
 const user = require('./routes/user');
-const Addmve = require('./model/SchemaAddNve');
+const mve = require('./model/SchemaAddNve')
+
 
 //initilze express.js
 const app = express();
@@ -24,7 +25,26 @@ app.use('/api/auth', auth);
 //users api's
 app.use('/api/user', user);
 //Mve api's
-app.use('/api/movies', Addmve)
+app.post('/api/addmves', (req, res) => {
+    const { title, flexiUrl, posterUrl, description, videoUrl, language} = req.body;
+    const newMovie = new mve({
+      title,
+      flexiUrl,
+      posterUrl,
+      description,
+      videoUrl,
+      language
+    });
+  
+    newMovie.save()
+      .then((result) => {
+        res.status(201).json(result);
+      })
+      .catch((error) => {
+        res.status(500).json({ error: error.message });
+        console.log(error)
+      });
+  });
 
 //run server
 app.listen(5000, () => console.log('server is running'));

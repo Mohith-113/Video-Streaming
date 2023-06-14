@@ -16,13 +16,19 @@ const movieSchema = new mongoose.Schema({
     required: true
   },
   description: {
-    type: Number,
+    type: String,
     required: true
   },
-  rvideoUrl: {
-    type: Date,
+  videoUrl: {
+    type: String,
+    required: true
+  },
+  language: {
+    type: String,
+    enum: ['engmve', 'telugumve'], // Update the enum values
     required: true
   }
+
 });
 
 const Addmve = mongoose.model('Addmve', movieSchema);
