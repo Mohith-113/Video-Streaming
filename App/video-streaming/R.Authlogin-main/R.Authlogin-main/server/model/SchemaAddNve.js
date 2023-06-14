@@ -12,7 +12,7 @@ const movieSchema = new mongoose.Schema({
     required: true
   },
   posterUrl: {
-    type: String,
+    type: String, 
     required: true
   },
   description: {

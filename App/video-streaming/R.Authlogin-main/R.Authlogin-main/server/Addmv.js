@@ -6,14 +6,13 @@ const Addmve = require('./model/SchemaAddNve');
 
 // Store data in MongoDB
 router.post('/', (req, res) => {
-  const { movieName, flexiUrl, posterUrl, rating, releaseDate, description } = req.body;
+  const { movieName, flexiUrl, posterUrl, description, videoUrl } = req.body;
   const newMovie = new Addmve({
     movieName,
     flexiUrl,
     posterUrl,
-    rating,
-    releaseDate,
-    description
+    description,
+    videoUrl
   });
 
   newMovie.save()

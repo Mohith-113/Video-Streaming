@@ -3,7 +3,7 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const { User } = require('../model/Schema');
 const jwt = require('jsonwebtoken');
-const Addmve = require('../model/SchemaAddNve');
+const {Addmve}  = require('../model/SchemaAddNve');
 
 //register route
 router.post("/register", async (req, res) => {

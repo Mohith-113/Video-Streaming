@@ -9,13 +9,13 @@ export default function Add() {
   const navigate = useNavigate();
   const [Add, setAdd] = useState({ title: '', posterUrl: '', flexiUrl: '', description: '', videoUrl:'' });
   const changeHandler = (e) => {
-      setAdd({ ...Add, [e.target.title]: e.target.value });
+      setAdd({ ...Add, [e.target.name]: e.target.value });
   }
   const submitHandler = (e) => {
       e.preventDefault();
       axios.post(`http://localhost:5000/api/movies`, Add).then(res => { alert(res.data); navigate('/') }).catch(err => alert(err.response.data));
   }
-  return (
+  return ( 
     <div className="login">
       
       <div className="container">

@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors({
     origin: '*'
 }));
-
+ 
 //connect mongobd
 mongoose.connect('mongodb+srv://Mohith-Anabathula:Mohith-Anabathula@cluster0.2z0nmuv.mongodb.net/?retryWrites=true&w=majority').then(
     console.log("Db is connected")
