@@ -3,6 +3,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const auth = require('./routes/auth');
 const user = require('./routes/user');
+const addmve = require('./Addmv');
 
 //initilze express.js
 const app = express();
@@ -22,6 +23,9 @@ mongoose.connect('mongodb+srv://Mohith-Anabathula:Mohith-Anabathula@cluster0.2z0
 app.use('/api/auth', auth);
 //users api's
 app.use('/api/user', user);
+//Mve api's
+app.use('/api/movies', addmve);
+  
 
 //run server
 app.listen(5000, () => console.log('server is running'));
