@@ -1,14 +1,14 @@
 import React from 'react'
 import Slider from '../components/Slider'
-import LatestMve from '../components/EnglishMve'
-import FavMve from '../components/TeluguMve'
+import EnglishMve from '../components/EnglishMve'
+import TeluguMve from '../components/TeluguMve'
 
 export default function Home() {
   return (
     <div>
       <Slider/>
-      <LatestMve/>
-      <FavMve/>
+      <EnglishMve/>
+      <TeluguMve/>
     </div>
   )
 }

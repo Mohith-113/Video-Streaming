@@ -11,9 +11,8 @@ const Footer = () => {
             <h5>Links:-</h5>
             <ul className="list-unstyled">
               <li><a href="/">Home</a></li>
-              <li><a href="/movies">Movies</a></li>
-              <li><a href="/series">Series</a></li>
-              <li><a href="/contact">Contact</a></li>
+              <li><a href="/TeluguMovies">Telugu Movies</a></li>
+              <li><a href="/EnglishMovies">English Movies</a></li>
             </ul>
           </Col>
           <Col>
@@ -26,7 +25,7 @@ const Footer = () => {
         </Row>
         <Row>
           <Col>
-            <p>&copy; {new Date().getFullYear()} Video Streaming. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} VS Trailers. All rights reserved.</p>
           </Col>
         </Row>
       </Container>

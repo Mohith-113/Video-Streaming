@@ -35,50 +35,103 @@
 // export default Header;
 
 
-import React from 'react';
-import { Routes, Route, BrowserRouter} from 'react-router-dom';
+// import React from 'react';
+// import { Routes, Route, BrowserRouter } from 'react-router-dom';
+// import Home from '../Pages/Home';
+// import EnglishMovies from '../Pages/EnglishMovies';
+// import Navigation from './Navigation';
+// import ProfilePage from '../Pages/ProfilePage';
+// import SignUp from './signUp';
+// import PlayPage from './yasaswini/PlayPage'
+// import Login from '../Pages/swetha/Login'
+// import SignIn from '../Pages/swetha/SignIn';
+// import TM from '../Pages/TM';
+// import Admindash from '../Pages/Admindash';
+// import Adminlogin from '../Pages/Adminlogin';
+// import Add from '../Pages/Add';
+// import MovieDetails from './MovieDetails';
+
+// class Header extends React.Component{
+  
+//   render(){
+//     return(
+//       <div>
+
+//         <BrowserRouter>
+//            <Navigation/>
+//            <Routes>
+//               <Route path='/' element={<Home/>} />
+//               <Route path='/TeluguMovies' element={<TM/>} />
+//               <Route path='/EnglishMovies' element={<EnglishMovies/>} />
+//               <Route path='/ProfilePage' element={<ProfilePage/>} />
+//               <Route path='/PlayPage' component={<PlayPage/>} />
+//               <Route path='/sign-up' component={SignUp} />
+//               <Route path='/Login' element={<Login/>} />
+//               <Route path='/SignUp' element={<SignIn/>} />
+//               <Route path='/TeluguMovies' element={<TM/>} />
+//               <Route path='/Adminlogin' element={<Adminlogin/>}/>
+//               <Route path='/Admindash' element={<Admindash/>}/>
+//               <Route path='/Add' element={<Add/>}/>
+//               <Route path="/movie/:id" element={<MovieDetails />} />
+             
+//            </Routes>
+         
+//         </BrowserRouter>
+
+
+//       </div>
+//           )
+//   }
+// }
+
+// export default Header
+
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from '../Pages/Home';
 import EnglishMovies from '../Pages/EnglishMovies';
 import Navigation from './Navigation';
 import ProfilePage from '../Pages/ProfilePage';
-import SignUp from './signUp';
-import PlayPage from './yasaswini/PlayPage'
-import Login from '../Pages/swetha/Login'
+// import SignUp from './SignUp';
+import PlayPage from './yasaswini/PlayPage';
+import Login from '../Pages/swetha/Login';
 import SignIn from '../Pages/swetha/SignIn';
 import TM from '../Pages/TM';
 import Admindash from '../Pages/Admindash';
 import Adminlogin from '../Pages/Adminlogin';
 import Add from '../Pages/Add';
+import MovieDetails from './MovieDetails';
 
-class Header extends React.Component{
-  
-  render(){
-    return(
-      <div>
+const Header = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-        <BrowserRouter>
-           <Navigation/>
-           <Routes>
-              <Route path='/' element={<Home/>} />
-              <Route path='/TeluguMovies' element={<TM/>} />
-              <Route path='/EnglishMovies' element={<EnglishMovies/>} />
-              <Route path='/ProfilePage' element={<ProfilePage/>} />
-              <Route path='/PlayPage' element={<PlayPage/>} />
-              <Route path='/sign-up' component={SignUp} />
-              <Route path='/Login' element={<Login/>} />
-              <Route path='/SignUp' element={<SignIn/>} />
-              <Route path='/TeluguMovies' element={<TM/>} />
-              <Route path='/Adminlogin' element={<Adminlogin/>}/>
-              <Route path='/Admindash' element={<Admindash/>}/>
-              <Route path='/Add' element={<Add/>}/>
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
 
-           </Routes>
-        </BrowserRouter>
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
 
+  return (
+    <Router>
+      <Navigation isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/TeluguMovies" element={<TM />} />
+        <Route path="/EnglishMovies" element={<EnglishMovies />} />
+        <Route path="/ProfilePage" element={<ProfilePage />} />
+        <Route path="/PlayPage" element={<PlayPage />} />
+        {/* <Route path="/sign-up" element={<SignUp />} /> */}
+        <Route path="/Login" element={<Login onLogin={handleLogin} />} />
+        <Route path="/SignUp" element={<SignIn />} />
+        <Route path="/Adminlogin" element={<Adminlogin />} />
+        <Route path="/Admindash" element={<Admindash />} />
+        <Route path="/Add" element={<Add />} />
+        <Route path="/movie/:id" element={<MovieDetails />} />
+      </Routes>
+    </Router>
+  );
+};
 
-      </div>
-          )
-  }
-}
-
-export default Header
+export default Header;
