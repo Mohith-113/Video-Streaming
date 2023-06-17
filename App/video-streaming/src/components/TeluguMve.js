@@ -1,62 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Card, Container, Row, Col } from 'react-bootstrap';
+import { Card, Container, Row, Col, NavLink } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const MovieGroup = () => {
-  const movies = [
-    {
-      id: 1,
-      title: 'Movie 1',
-      description: 'Description for Movie 1',
-      imageUrl: 'https://picfiles.alphacoders.com/390/390919.jpg'
-    },
-    {
-      id: 2,
-      title: 'Movie 2',
-      description: 'Description for Movie 2',
-      imageUrl: 'https://picfiles.alphacoders.com/141/141078.jpg'
-    },
-    {
-        id: 1,
-        title: 'Movie 1',
-        description: 'Description for Movie 1',
-        imageUrl: 'https://picfiles.alphacoders.com/390/390919.jpg'
-      },
-      {
-        id: 2,
-        title: 'Movie 2',
-        description: 'Description for Movie 2',
-        imageUrl: 'https://picfiles.alphacoders.com/141/141078.jpg'
-      },
-      {
-        id: 1,
-        title: 'Movie 1',
-        description: 'Description for Movie 1',
-        imageUrl: 'https://picfiles.alphacoders.com/390/390919.jpg'
-      },
-      {
-        id: 2,
-        title: 'Movie 2',
-        description: 'Description for Movie 2',
-        imageUrl: 'https://picfiles.alphacoders.com/141/141078.jpg'
-      },
-      
-    // Add more movie objects here
-  ];
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/addmve')
+      .then(response => response.json())
+      .then(data => {
+        // Filter movies by language
+        const TeluguMovies = data.filter(movie => movie.language === 'telugumve');
+        setMovies(TeluguMovies);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }, []);
 
   return (
     <div style={{ padding: '20px 0' }}>
-        
       <Container>
-      <h1>Telugu Movies</h1>
+        <h1>Telugu Movies</h1>
         <Row className='scrolling-wrapper'>
           {movies.map((movie) => (
-            <Col key={movie.id} xs={12} sm={6} md={4} lg={3}>
-              <Card className="mb-4 custom-card " >
-                <Card.Img variant="top"  src={movie.imageUrl} alt={movie.title} style={{ height: '300px', objectFit: 'cover' }} />
+            <Col key={movie._id} xs={12} sm={6} md={4} lg={3}>
+              <Card className="mb-4 custom-card">
+                <NavLink eventKey='6' as={Link} to={`/movie/${movie._id}`}>
+                  <Card.Img
+                    variant="top"
+                    src={movie.posterUrl}
+                    alt={movie.title}
+                    style={{ height: '300px', objectFit: 'cover' }}
+                  />
+                </NavLink>
                 <Card.Body>
                   <Card.Title>{movie.title}</Card.Title>
-                  <Card.Text>{movie.description}</Card.Text>
                 </Card.Body>
               </Card>
             </Col>
@@ -65,6 +45,6 @@ const MovieGroup = () => {
       </Container>
     </div>
   );
-}
+};
 
 export default MovieGroup;
