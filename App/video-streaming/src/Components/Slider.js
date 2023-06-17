@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Carousel } from 'react-bootstrap';
@@ -30,7 +31,216 @@ const Slider = () => {
         />
       </Carousel.Item>
     </Carousel>
+=======
+import React, { useRef, useState } from 'react';
+import A from './A.jpg'
+import './Slider.css';
+
+function Slider() {
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+
+  const sliderRef = useRef(null);
+
+  const handleMouseDown = (event) => {
+    setIsDragging(true);
+    setStartX(event.clientX - sliderRef.current.offsetLeft);
+    setScrollLeft(sliderRef.current.scrollLeft);
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  const handleMouseMove = (event) => {
+    if (!isDragging) return;
+    event.preventDefault();
+    const x = event.clientX - sliderRef.current.offsetLeft;
+    const walk = (x - startX) * 3;
+    sliderRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  return (
+    <div
+      className="slider-container"
+      onMouseDown={handleMouseDown}
+      onMouseUp={handleMouseUp}
+      onMouseMove={handleMouseMove}
+    >
+      <div className="slider" ref={sliderRef}>
+        <div className="cards">
+          <div className="card">
+            <img src={A} alt="Card 1" />
+          </div>
+          <div className="card">
+            <img src={A} alt="Card 2" />
+          </div>
+          <div className="card">
+            <img src={A} alt="Card 3" />
+          </div>
+          <div className="card">
+            <img src={A} alt="Card 4" />
+          </div>
+          <div className="card">
+            <img src={A} alt="Card 5" />
+          </div>
+          <div className="card">
+            <img src={A} alt="Card 6" />
+          </div>
+          <div className="card">
+            <img src={A} alt="Card 7" />
+          </div>
+        </div>
+      </div>
+    </div>
+>>>>>>> Stashed changes
   );
 }
 
 export default Slider;
+<<<<<<< Updated upstream
+=======
+
+
+// import React, { useRef, useState } from 'react';
+// import { Row, Col, Container, Button } from 'react-bootstrap';
+// import './Slider.css';
+
+// function Slider() {
+//   const [scrollLeft, setScrollLeft] = useState(0);
+//   const sliderRef = useRef(null);
+
+//   const handleSliderMove = (amount) => {
+//     if (sliderRef.current) {
+//       sliderRef.current.scrollLeft += amount;
+//       setScrollLeft(sliderRef.current.scrollLeft);
+//     }
+//   };
+
+//   return (
+//     <Container className="slider-container">
+//       <Row>
+//         <Col xs={1}>
+//           <Button
+//             variant="light"
+//             className="slider-button"
+//             onClick={() => handleSliderMove(-100)}
+//           >
+//             &lt;
+//           </Button>
+//         </Col>
+//         <Col xs={10}>
+//           <div className="slider" ref={sliderRef}>
+//             <div className="cards">
+//               <div className="card">
+//                 <img src="card1.jpg" alt="Card 1" />
+//               </div>
+//               <div className="card">
+//                 <img src="card2.jpg" alt="Card 2" />
+//               </div>
+//               <div className="card">
+//                 <img src="card3.jpg" alt="Card 3" />
+//               </div>
+//               <div className="card">
+//                 <img src="card4.jpg" alt="Card 4" />
+//               </div>
+//               <div className="card">
+//                 <img src="card5.jpg" alt="Card 5" />
+//               </div>
+//               <div className="card">
+//                 <img src="card6.jpg" alt="Card 6" />
+//               </div>
+//               <div className="card">
+//                 <img src="card7.jpg" alt="Card 7" />
+//               </div>
+//             </div>
+//           </div>
+//         </Col>
+//         <Col xs={1}>
+//           <Button
+//             variant="light"
+//             className="slider-button"
+//             onClick={() => handleSliderMove(100)}
+//           >
+//             &gt;
+//           </Button>
+//         </Col>
+//       </Row>
+//     </Container>
+//   );
+// }
+
+// export default Slider;
+
+
+// import React, { useRef, useState } from 'react';
+// import { Row, Col, Container, Button } from 'react-bootstrap';
+// import './Slider.css';
+
+// function Slider() {
+//   const [scrollLeft, setScrollLeft] = useState(0);
+//   const sliderRef = useRef(null);
+
+//   const handleSliderMove = (amount) => {
+//     if (sliderRef.current) {
+//       sliderRef.current.scrollLeft += amount;
+//       setScrollLeft(sliderRef.current.scrollLeft);
+//     }
+//   };
+
+//   return (
+//     <Container className="slider-container">
+//       <Row>
+//         <Col xs={1}>
+//           <Button
+//             variant="light"
+//             className="slider-button"
+//             onClick={() => handleSliderMove(-100)}
+//           >
+//             &lt;
+//           </Button>
+//         </Col>
+//         <Col xs={10}>
+//           <div className="slider" ref={sliderRef}>
+//             <div className="cards">
+//               <div className="card">
+//                 <img src="card1.jpg" alt="Card 1" />
+//               </div>
+//               <div className="card">
+//                 <img src="card2.jpg" alt="Card 2" />
+//               </div>
+//               <div className="card">
+//                 <img src="card3.jpg" alt="Card 3" />
+//               </div>
+//               <div className="card">
+//                 <img src="card4.jpg" alt="Card 4" />
+//               </div>
+//               <div className="card">
+//                 <img src="card5.jpg" alt="Card 5" />
+//               </div>
+//               <div className="card">
+//                 <img src="card6.jpg" alt="Card 6" />
+//               </div>
+//               <div className="card">
+//                 <img src="card7.jpg" alt="Card 7" />
+//               </div>
+//             </div>
+//           </div>
+//         </Col>
+//         <Col xs={1}>
+//           <Button
+//             variant="light"
+//             className="slider-button"
+//             onClick={() => handleSliderMove(100)}
+//           >
+//             &gt;
+//           </Button>
+//         </Col>
+//       </Row>
+//     </Container>
+//   );
+// }
+
+// export default Slider;
+>>>>>>> Stashed changes
