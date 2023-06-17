@@ -1,5 +1,5 @@
 import React from 'react'
-import EnglishMve from '../components/EnglishMve'
+import EnglishMve from '../Components/EnglishMve'
 
 export default function Series() {
   return (

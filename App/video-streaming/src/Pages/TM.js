@@ -1,5 +1,5 @@
 import React from 'react'
-import TeluguMve from '../components/TeluguMve'
+import TeluguMve from '../Components/TeluguMve'
 
 export default function TM() {
   return (

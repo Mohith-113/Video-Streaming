@@ -11,10 +11,30 @@ export default function Login() {
   const changeHandler = (e) => {
       setregister({ ...register, [e.target.name]: e.target.value });
   }
+//   const submitHandler = (e) => {
+//       e.preventDefault();
+//       axios.post(`http://localhost:5000/api/auth/register`, register).then(res => { alert(res.data); navigate('/login') }).catch(err => alert(err.response.data));
+//   }
   const submitHandler = (e) => {
-      e.preventDefault();
-      axios.post(`http://localhost:5000/api/auth/register`, register).then(res => { alert(res.data); navigate('/login') }).catch(err => alert(err.response.data));
-  }
+    e.preventDefault();
+    axios.post(`http://localhost:5000/api/auth/register`, register)
+      .then(res => {
+        if (res.data) {
+          alert(res.data);
+          navigate('/login');
+        } else {
+          alert('Registration successful.'); // Or handle the response without accessing `data`
+          navigate('/login');
+        }
+      })
+      .catch(err => {
+        if (err.response && err.response.data) {
+          alert(err.response.data);
+        } else {
+          alert('An error occurred during registration.');
+        }
+      });
+  };
   return (
     <div className="login">
       

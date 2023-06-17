@@ -1,7 +1,7 @@
 import React from 'react'
-import Slider from '../components/Slider'
-import LatestMve from '../components/EnglishMve'
-import FavMve from '../components/TeluguMve'
+import Slider from '../Components/Slider'
+import LatestMve from '../Components/EnglishMve'
+import FavMve from '../Components/TeluguMve'
 
 export default function Home() {
   return (

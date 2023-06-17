@@ -1,8 +1,8 @@
 import React from 'react'
-import Header from './components/Header'
+import Header from './Components/Header'
 import './App.css'
-import Footer from './components/Footer'
-// import Slider from './components/Slider'
+import Footer from './Components/Footer'
+// import Slider from './Components/Slider'
 
 export default function App() {
   return (
@@ -15,7 +15,7 @@ export default function App() {
 
 
 // import React from 'react'
-// import Page2 from './components/yasaswini/Page2'
+// import Page2 from './Components/yasaswini/Page2'
 // import {BrowserRouter,Routes,Route} from 'react-router-dom'
 
 // function App() {
